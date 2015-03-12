@@ -4,7 +4,7 @@
 #include <QtGui/QFontMetrics>
 
 
-#include "../common/constants.h"
+#include "../application/constants.h"
 
 Dialog_About::Dialog_About(
         const ApplicationInfo& applicationInfo,

@@ -6,7 +6,7 @@ StaticLibrary {
     
     files: [
         "src/common/library.h",
-        "src/common/types.h",
+        "src/common/puzzleinfo.h",
     ]
 
     Export {

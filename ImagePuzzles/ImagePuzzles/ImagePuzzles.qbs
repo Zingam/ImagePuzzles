@@ -27,10 +27,11 @@ CppApplication {
     }
 
     files: [
-        "src/common/applicationinfo.h",
-        "src/common/constants.h",
+        "src/application/applicationinfo.h",
+        "src/application/constants.h",
         "src/core/puzzle.cpp",
         "src/core/puzzle.h",
+        "src/core/puzzleloader.h",
         "src/main.cpp",
     ]
 
@@ -59,7 +60,6 @@ CppApplication {
         // that needs to be copied
         files: [
             "assets",
-            "src/core/puzzleloader.h",
         ]
         qbs.install: true
         qbs.installDir: destinationDirectoryPath

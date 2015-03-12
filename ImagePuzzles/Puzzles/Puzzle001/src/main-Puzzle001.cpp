@@ -1,27 +1,59 @@
 #include <string>
 #include <iostream>
 
+#include "puzzleheader.h"
+
 #include "common/library.h"
-#include "common/types.h"
-
-const char* const number =
-        "001";
-const char* const name =
-        "Create an Image of Uniform Gray Level";
-const char* const parametersInfo =
-        "(int)width, (int)height, (int)grayLevel";
-const char* const text =
-        "Creates a gray level image file of size 200 rows by 300 columns with"
-        " all pixels at level 240."
-        "Use parameters: 200 300 240";
-
-// Default parameters
-int width = 300;
-int height = 300;
-int grayLevel = 140;
+#include "common/puzzleinfo.h"
 
 
-extern "C" API_EXPORT PuzzleInfo* getPuzzleInfo()
+/* ****************************************************************************
+ * GLOBAL VARIABLES
+ * ***************************************************************************/
+PuzzleInfo puzzleInfo;
+static PuzzleInfo::ErrorCodes errorCode = PuzzleInfo::ErrorCodes::NoError;
+
+/* ****************************************************************************
+ * EXPORTED FUNCTIONS
+ * ***************************************************************************/
+
+///
+/// \brief Returns an unique identifier
+///
+/// The returned value must be "5a5a20a2-f5ef-4d21-9661-0942251e97a8". The
+/// application needs to check for this value to identify if the loaded dynamic
+/// library is a puzzle. If \return is a correct value the application can
+/// load the rest of the functions;
+///
+/// \returns "5a5a20a2-f5ef-4d21-9661-0942251e97a8"
+///
+extern "C"
+API_EXPORT PuzzleGUID
+getPuzzleGUID()
+{
+    return puzzleGUID;
+}
+
+///
+/// \brief Returns the last error code
+///
+/// \returns PuzzleInfo::ErorrCodes
+///
+extern "C"
+API_EXPORT const PuzzleInfo::ErrorCodes
+getErrorCode()
+{
+    return errorCode;
+}
+
+///
+/// \brief Returns information about the puzzle.
+///
+/// \returns PuzzleInfo*
+///
+extern "C"
+API_EXPORT PuzzleInfo*
+getPuzzleInfo()
 {
     PuzzleInfo* puzzleInfo = new PuzzleInfo();
 
@@ -33,7 +65,13 @@ extern "C" API_EXPORT PuzzleInfo* getPuzzleInfo()
     return puzzleInfo;
 }
 
-extern "C" API_EXPORT void run(char* parameters)
+///
+/// \brief Runs the puzzle with the passed parameters.
+/// \param[in] char* parameters A list of parameters.
+///
+extern "C"
+API_EXPORT void
+run(const char* const parameters)
 {
     std::cout << "Parameters: " << parameters << std::endl;
 }

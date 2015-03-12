@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "../common/applicationinfo.h"
+#include "../application/applicationinfo.h"
 
 namespace Ui {
 class Dialog_About;

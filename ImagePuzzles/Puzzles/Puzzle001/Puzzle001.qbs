@@ -31,7 +31,10 @@ DynamicLibrary  {
     Group {
         name: "Puzzle001"
         prefix: "src/"
-        files: [ "main-Puzzle001.cpp" ]
+        files: [
+            "main-Puzzle001.cpp",
+            "puzzleheader.h",
+        ]
     }
 
     // Executables groups

@@ -1,14 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <iostream>
+
 #include <QtCore/QDebug>
 #include <QtGui/QCloseEvent>
 #include <QtWidgets/QMessageBox>
 
 #include "../forms/dialogabout.h"
 
-#include "../common/constants.h"
+#include "../application/constants.h"
 #include "../core/puzzle.h"
+#include "../core/puzzleloader.h"
 
 
 MainWindow::MainWindow(QWidget* parent) :
@@ -110,26 +113,27 @@ void MainWindow::on_action_Exit_triggered()
 void MainWindow::on_action_Reload_triggered()
 {
     qDebug() << "Reload";
-
-    const char* path = "Puzzles/Puzzle001";
-    Puzzle puzzle(path);
-
-    if (puzzle.isLoaded)
-    {
-        qDebug() << puzzle.puzzleInfo->name;
-        qDebug() << puzzle.puzzleInfo->text;
-
-        puzzle.run(path);
-    }
-    else
-    {
-        qDebug() << "Puzzle not loaded!";
-    }
 }
 
 void MainWindow::on_action_Run_triggered()
 {
-    qDebug() << "Run";
+    this->puzzles = loadPuzzles();
+
+    for (Puzzle* puzzle: this->puzzles)
+    {
+        if (puzzle->isLoaded)
+        {
+            QString itemName =
+                    puzzle->puzzleInfo->number
+                    + QString(" - ")
+                    + puzzle->puzzleInfo->name;
+
+            this->ui->comboBox_Puzzles->addItem(itemName);
+
+            const char* const path = "Puzzles/Puzzle001";
+            puzzle->run(path);
+        }
+    }
 }
 
 void MainWindow::on_action_SaveAs_triggered()

@@ -1,13 +1,17 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include <QtCore/QList>
+#include <QtWidgets/QMainWindow>
 
-#include "../common/applicationinfo.h"
+
+#include "../application/applicationinfo.h"
 
 namespace Ui {
 class MainWindow;
 }
+
+class Puzzle;
 
 
 class MainWindow : public QMainWindow
@@ -33,6 +37,8 @@ private:
 
     ApplicationInfo applicationInfo;
     QPixmap pixmap_ImageLogo;
+
+    QList<Puzzle*> puzzles;
 };
 
 #endif // MAINWINDOW_H

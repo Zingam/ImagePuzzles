@@ -5,6 +5,8 @@ const auto res_fileName_ImageLogo = "assets/icons/icon.png";
 const auto res_applicationTitle =   "ImagePuzzles";
 const auto res_authorName =         "Roccoor Multimedia&trade;";
 
+const auto res_PuzzlesPathName = "/Puzzles";
+
 const auto res_MainWindow_action_Exit_QMessageBox_Text=
         "<style>"
         ".text {"
