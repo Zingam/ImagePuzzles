@@ -1,7 +1,8 @@
 import qbs
 
+
 DynamicLibrary  {
-    property var projectName: "Puzzle001";
+    property var projectName: "Puzzle003";
 
     // Project settings
     name: projectName
