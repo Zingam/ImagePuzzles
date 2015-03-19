@@ -1,11 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <string>
+#include <vector>
+
 #include <QtCore/QList>
 #include <QtWidgets/QMainWindow>
 
-
 #include "../application/applicationinfo.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +27,7 @@ public:
 
 private:
     void closeEvent(QCloseEvent* event);
+    void setPuzzle(Puzzle* puzzle);
 
 private slots:
     void on_action_About_triggered();
@@ -32,13 +36,18 @@ private slots:
     void on_action_Run_triggered();
     void on_action_SaveAs_triggered();
 
+    void on_comboBox_Puzzles_activated(int index);
+
 private:
     Ui::MainWindow* ui;
 
     ApplicationInfo applicationInfo;
     QPixmap pixmap_ImageLogo;
+    QPixmap pixmap_PuzzleResult;
 
     QList<Puzzle*> puzzles;
+
+    std::vector<std::string> parameters;
 };
 
 #endif // MAINWINDOW_H

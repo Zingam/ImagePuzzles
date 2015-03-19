@@ -29,6 +29,7 @@ CppApplication {
     files: [
         "src/application/applicationinfo.h",
         "src/application/constants.h",
+        "src/core/parseparameters.h",
         "src/core/puzzle.cpp",
         "src/core/puzzle.h",
         "src/core/puzzleloader.h",

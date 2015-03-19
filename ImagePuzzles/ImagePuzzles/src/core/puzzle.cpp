@@ -6,6 +6,7 @@
 Puzzle::Puzzle(QString path):
     isLoaded(false),
     puzzleInfo(),
+    puzzleTitle(),
     run(nullptr),
     getErrorCode(nullptr),
     getPuzzleGUID(nullptr),
@@ -33,22 +34,44 @@ Puzzle::Puzzle(QString path):
             {
                 this->getErrorCode =
                         reinterpret_cast<getErrorCode_t>(library.resolve("getErrorCode"));
+                if (nullptr == getErrorCode)
+                    this->isLoaded = false;
+
                 this->getPuzzleInfo =
                         reinterpret_cast<getPuzzleInfo_t>(library.resolve("getPuzzleInfo"));
+                if (nullptr == this->getPuzzleInfo)
+                    this->isLoaded = false;
+
                 this->run =
                         reinterpret_cast<run_t>(library.resolve("run"));
+                if (nullptr == this->run)
+                    this->isLoaded = false;
 
                 // Get the information about the puzzle
-                this->puzzleInfo = getPuzzleInfo();
+                if (this->isLoaded)
+                {
+                    this->puzzleInfo = getPuzzleInfo();
+
+                    this->puzzleTitle =
+                            puzzleInfo->number
+                            + QString(" - ")
+                            + puzzleInfo->name;
+                }
             }
             else
             {
                 // This is not a valid puzzle
-                isLoaded = false;
-                this->library.unload();
+                this->isLoaded = false;
+
             }
         }
+    }
 
+    // Unload the library if there was an error
+    if (!(this->isLoaded) &&
+            (this->library.isLoaded()))
+    {
+        this->library.unload();
     }
 }
 

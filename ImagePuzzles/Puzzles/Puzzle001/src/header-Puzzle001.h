@@ -1,6 +1,9 @@
 #ifndef HEADER
 #define HEADER
 
+#include "common/cssstyles.h"
+
+
 /* ****************************************************************************
  * CONSTANTS
  * ***************************************************************************/
@@ -12,14 +15,16 @@ const char* const name =
 const char* const parametersInfo =
         "(int)width, (int)height, (int)grayLevel";
 const char* const text =
-        "Create a gray level image file of size 200 rows by 300 columns with "
-        "all pixels at level 240.\n"
-        "\n"
-        "Use parameters:\n"
-        "    200 300 240";
+        CSS_STYLES
+        "<p class='heading'>Problem:</p>"
+        "<p>Create a gray level image file of size 200 rows by 300 columns with "
+        "all pixels at level 240.</p>"
+        "<p class='heading'>Parameters:</p>"
+        "<p class='parameters'>200 300 240</p>"
+        "<p class='note'>Use the above parameters in the parameters line edit.</note>";
 
 // Default parameters
-int width = 300;
+int width = 200;
 int height = 300;
 int grayLevel = 240;
 

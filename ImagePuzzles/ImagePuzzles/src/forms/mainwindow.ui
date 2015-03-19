@@ -12,7 +12,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
+    <width>500</width>
     <height>500</height>
    </size>
   </property>
@@ -24,7 +24,7 @@
     <item>
      <widget class="QGroupBox" name="groupBox_Puzzles">
       <property name="title">
-       <string>Puzzles</string>
+       <string>Select</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -50,7 +50,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Select:</string>
+            <string>Puzzle:</string>
            </property>
           </widget>
          </item>
@@ -69,6 +69,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="toolTip">
             <string>Reload the selected Puzzle</string>
            </property>
@@ -81,6 +87,45 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_Puzzles_02">
+         <item>
+          <widget class="QLabel" name="label_Implementation">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Function:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_Implementations"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_Spacer">
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_Puzzles_03">
          <item>
           <widget class="QLabel" name="label_Puzzles_Parameters">
            <property name="sizePolicy">
@@ -121,6 +166,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="toolTip">
             <string>Run the selected Puzzle</string>
            </property>
@@ -155,11 +206,41 @@
        <attribute name="title">
         <string>Image</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="tab_label_Image">
+          <property name="text">
+           <string>Please, select a Puzzle!</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_PuzzleText">
        <attribute name="title">
         <string>Puzzle</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="tab_label_PuzzleText">
+          <property name="text">
+           <string>Please, select a Puzzle!</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
