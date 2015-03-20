@@ -1,11 +1,11 @@
 #include <string>
 #include <iostream>
 
-#include "header-Puzzle001.h"
-
 #include <string>
 #include <vector>
 #include <map>
+
+#include "Puzzle001.h"
 
 #include "common/apiexport.h"
 #include "common/puzzlefunctions.h"
@@ -20,34 +20,6 @@ static PuzzleInfo::ErrorCodes errorCode = PuzzleInfo::ErrorCodes::NoError;
 static std::string defaultParametersString;
 static Implementations implementations;
 static PuzzlePixmap puzzlePixmap;
-
-/* ****************************************************************************
- * FUNCTIONS
- * ***************************************************************************/
-
-std::string&
-getDefaultParametersString()
-{
-    if (!defaultParametersString.empty())
-        defaultParametersString.erase();
-
-    defaultParametersString
-            .append(std::to_string(width)).append(" ")
-            .append(std::to_string(height)).append(" ")
-            .append(std::to_string(grayLevel)).append(" ");
-
-    return defaultParametersString;
-}
-
-std::vector<PuzzleInfo::ImplementationType>&
-getImplementations()
-{
-    implementations.push_back(PuzzleInfo::CPlusPlus);
-    implementations.push_back(PuzzleInfo::OpenCL);
-    implementations.push_back(PuzzleInfo::OpenGL);
-
-    return implementations;
-}
 
 /* ****************************************************************************
  * EXPORTED FUNCTIONS
@@ -95,13 +67,13 @@ GetPuzzleInfo(getPuzzleInfo)    // void
 
     puzzleInfo->number = const_cast<char*>(number);
     puzzleInfo->name = const_cast<char*>(name);
-    std::string& parameters = getDefaultParametersString();
+    std::string& parameters = getDefaultParametersString(defaultParametersString);
     puzzleInfo->paramaters = parameters.c_str();
     puzzleInfo->parametersInfo = const_cast<char*>(parametersInfo);
     puzzleInfo->text = const_cast<char*>(text);
 
-    Implementations& implementations = getImplementations();
-    puzzleInfo->implementations = &implementations;
+    Implementations& implementations_Ref = getImplementations(implementations);
+    puzzleInfo->implementations = &implementations_Ref;
 
     return puzzleInfo;
 }
@@ -120,24 +92,22 @@ API_EXPORT                      // void
 Run(run)                        // const void* const parameters,
                                 // PuzzleInfo::ImplemenationType implementaionType
 {
-    const std::vector<std::string>* const parameters1 =
+    const std::vector<std::string>* const parametersString =
             reinterpret_cast<const std::vector<std::string>* const>(parameters);
-    std::string param1 = parameters1->at(0);
-    std::string param2;
 
     switch (implementationType)
     {
         case PuzzleInfo::CPlusPlus:
         {
-            param2.append(IMPLEMENTATION_TYPE_CPlusPlus);
+            puzzlePixmap = run_CPlusPlus(puzzlePixmap, parametersString, errorCode);
         } break;
         case PuzzleInfo::OpenCL:
         {
-            param2.append(IMPLEMENTATION_TYPE_OpenCL);
+            puzzlePixmap = run_OpenCL(puzzlePixmap, parametersString, errorCode);
         } break;
         case PuzzleInfo::OpenGL:
         {
-            param2.append(IMPLEMENTATION_TYPE_OpenGL);
+            puzzlePixmap = run_OpenGL(puzzlePixmap, parametersString, errorCode);
         } break;
 
         default:
@@ -148,8 +118,6 @@ Run(run)                        // const void* const parameters,
             return &puzzlePixmap;
         }
     }
-
-    std::cout << param1 << " " << param2 << std::endl;
 
     return &puzzlePixmap;
 }

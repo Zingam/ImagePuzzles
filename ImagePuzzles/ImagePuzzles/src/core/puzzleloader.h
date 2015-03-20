@@ -8,6 +8,28 @@
 #include "../application/constants.h"
 #include "puzzle.h"
 
+Puzzle* loadPuzzle(QString fullPathName)
+{
+    bool isLibrary = QLibrary::isLibrary(fullPathName);
+
+    if (isLibrary)
+    {
+        Puzzle* puzzle = new Puzzle(fullPathName);
+
+        if (puzzle->isLoaded)
+        {
+            qDebug() << "Successully re-loaded:" << fullPathName;
+            std::cout << "Problem!!!" << std::endl;
+            return puzzle;
+        }
+        else
+        {
+            qDebug() << "Failed to re-load:    " << fullPathName << "(not a Puzzle)";
+        }
+    }
+
+    return nullptr;
+}
 
 QList<Puzzle*> loadPuzzles()
 {

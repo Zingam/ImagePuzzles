@@ -7,7 +7,7 @@ const auto res_authorName =         "Roccoor Multimedia&trade;";
 
 const auto res_PuzzlesPathName = "/Puzzles";
 
-const auto res_MainWindow_action_Exit_QMessageBox_Text=
+const auto res_MainWindow_action_Exit_QMessageBox_Text =
         "<style>"
         ".text {"
         "    color:         rgba(140, 20, 60, 255);"
@@ -28,6 +28,18 @@ const auto res_MainWindow_action_Exit_QMessageBox_InformativeText =
         "<span class='textFooter'>"
         "    &copy; 2015 %1 by %2"
         "</span>";
+
+const auto res_MainWindow_action_Run_QMessageBox_InvalidParameters =
+        "<style>"
+        ".message {"
+        "    color:         rgba(200, 20, 20, 255);"
+        "    font-weight:   bold;"
+        "}"
+        ".info {"
+        "    color:         rgba(20, 20, 200, 255);"
+        "    font-style:    italic;"
+        "}"
+        "</style>";
 
 const auto res_dialog_About_Text =
         "<style>"

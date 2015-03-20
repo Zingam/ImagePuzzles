@@ -188,24 +188,55 @@ void MainWindow::on_action_Exit_triggered()
 void MainWindow::on_action_Reload_triggered()
 {
     qDebug() << "Reload";
+
+//    int selectedPuzzleIndex = ui->comboBox_Puzzles->currentIndex();
+
+//    Puzzle* puzzle = this->puzzles.at(selectedPuzzleIndex);
+//    QString fullPathName = puzzle->fullPathName;
+
+//    delete puzzle;
+//    puzzle = nullptr;
+
+//    QMessageBox::question(
+//                this,
+//                tr("Reloading Puzzle"),
+//                tr("Continue reloading the Puzzle?"),
+//                QMessageBox::Yes,
+//                QMessageBox::NoButton);
+
+//    puzzle = loadPuzzle(fullPathName);
+//    if (nullptr != puzzle)
+//    {
+//        ui->comboBox_Puzzles->setItemText(selectedPuzzleIndex, puzzle->puzzleTitle);
+//        this->puzzles[selectedPuzzleIndex] = puzzle;
+//        this->setPuzzle(puzzle);
+//    }
+//    else
+//    {
+//        ui->comboBox_Puzzles->removeItem(selectedPuzzleIndex);
+//        puzzles.removeAt(selectedPuzzleIndex);
+//    }
 }
 
 void MainWindow::on_action_Run_triggered()
 {
-    qDebug() << "Run";
+    int selectedPuzzleIndex = ui->comboBox_Puzzles->currentIndex();
 
-    int selectedPuzzle = ui->comboBox_Puzzles->currentIndex();
-
-    QString puzzleTitle = puzzles.at(selectedPuzzle)->puzzleTitle;
+    QString puzzleTitle = puzzles.at(selectedPuzzleIndex)->puzzleTitle;
     QString message = tr("Running: ") + puzzleTitle;
 
     ui->statusBar->showMessage(message);
 
-    std::string text = ui->lineEdit_Puzzles_Parameters->text().toStdString();
+    QString text = ui->lineEdit_Puzzles_Parameters->text();
+    QStringList parametersList = text.split(" ", QString::SkipEmptyParts);
     parameters.clear();
-    parameters.push_back(text);
 
-    const void* voidPtr_parameters = reinterpret_cast<const void*>(&parameters);
+    for (QString& parameter: parametersList)
+    {
+        parameters.push_back(parameter.toStdString());
+    }
+
+    const void* parameters_VoidPtr = reinterpret_cast<const void*>(&parameters);
     PuzzleInfo::ImplementationType implementationType;
 
     QString implementationName = ui->comboBox_Implementations->currentText();
@@ -225,7 +256,22 @@ void MainWindow::on_action_Run_triggered()
     }
 
     PuzzlePixmap* puzzlePixmap =
-            puzzles.at(selectedPuzzle)->run(voidPtr_parameters, implementationType);
+            puzzles.at(selectedPuzzleIndex)->run(parameters_VoidPtr, implementationType);
+
+    PuzzleInfo::ErrorCodes errorCode = puzzles.at(selectedPuzzleIndex)->getErrorCode();
+    switch(errorCode)
+    {
+        case PuzzleInfo::InvalidParameters:
+        {
+            QMessageBox::critical(
+                        this,
+                        tr("Invalid parameters"),
+                        QString(res_MainWindow_action_Run_QMessageBox_InvalidParameters)
+                        + tr("<p class='message'>You have entered invalid parameters.</p>"
+                             "<p class='info'>Default values will be used instead.</p>"),
+                        QMessageBox::Ok, QMessageBox::NoButton);
+        } break;
+    }
 
     if (nullptr != puzzlePixmap)
     {

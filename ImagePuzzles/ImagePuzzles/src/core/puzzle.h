@@ -17,6 +17,7 @@ public:
     explicit Puzzle(QString path);
     ~Puzzle();
 
+    GetErrorCode(*getErrorCode);
     Run(*run);
 
 public:
@@ -24,9 +25,9 @@ public:
 
     PuzzleInfo* puzzleInfo;
     QString puzzleTitle;
+    QString fullPathName;
 
 private:
-    GetErrorCode(*getErrorCode);
     GetPuzzleGUID(*getPuzzleGUID);
     GetPuzzleInfo(*getPuzzleInfo);
 

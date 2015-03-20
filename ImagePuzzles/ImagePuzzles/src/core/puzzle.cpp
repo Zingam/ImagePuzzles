@@ -7,6 +7,7 @@ Puzzle::Puzzle(QString path):
     isLoaded(false),
     puzzleInfo(),
     puzzleTitle(),
+    fullPathName(path),
     run(nullptr),
     getErrorCode(nullptr),
     getPuzzleGUID(nullptr),
@@ -78,6 +79,5 @@ Puzzle::Puzzle(QString path):
 Puzzle::~Puzzle()
 {
     delete this->puzzleInfo;
-    std::cout << "Destroying object of: class Puzzle" << std::endl;
 }
 

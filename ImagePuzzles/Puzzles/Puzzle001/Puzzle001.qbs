@@ -34,8 +34,12 @@ DynamicLibrary  {
         name: projectName
         prefix: "src/"
         files: [
-            "header-" + projectName + ".h",
             "main-" + projectName + ".cpp",
+            projectName + ".cpp",
+            projectName + ".h",
+            projectName + "-CPlusPlus.cpp",
+            projectName + "-OpenCL.cpp",
+            projectName + "-OpenGL.cpp",
         ]
     }
 
