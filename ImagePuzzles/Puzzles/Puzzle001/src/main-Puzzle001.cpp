@@ -99,7 +99,9 @@ Run(run)                        // const void* const parameters,
     {
         case PuzzleInfo::CPlusPlus:
         {
-            puzzlePixmap = run_CPlusPlus(puzzlePixmap, parametersString, errorCode);
+            PuzzlePixmap& temp = run_CPlusPlus(puzzlePixmap, parametersString, errorCode);
+            puzzlePixmap = temp;
+            std::cout << "Output";
         } break;
         case PuzzleInfo::OpenCL:
         {

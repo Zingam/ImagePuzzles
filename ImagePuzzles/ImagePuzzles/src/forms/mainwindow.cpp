@@ -280,10 +280,16 @@ void MainWindow::on_action_Run_triggered()
         {
             this->pixmap_PuzzleResult.loadFromData(
                         puzzlePixmap->buffer,
-                        puzzlePixmap->size);
+                        puzzlePixmap->size,
+                        "PGM");
             if (!(this->pixmap_PuzzleResult.isNull()))
             {
+                qDebug() << "Pixmap loaded";
                 ui->tab_label_Image->setPixmap(this->pixmap_PuzzleResult);
+            }
+            else
+            {
+                qDebug() << "Pixmap failed to load";
             }
         }
     }

@@ -7,6 +7,8 @@ StaticLibrary {
     files: [
         "src/common/apiexport.h",
         "src/common/cssstyles.h",
+        "src/common/pixmap.cpp",
+        "src/common/pixmap.h",
         "src/common/puzzlefunctions.h",
         "src/common/puzzleinfo.h",
         "src/common/puzzlepixmap.h",
