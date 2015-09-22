@@ -1,6 +1,7 @@
 #include "Puzzle001.h"
 
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 
 #include "common/puzzleinfo.h"

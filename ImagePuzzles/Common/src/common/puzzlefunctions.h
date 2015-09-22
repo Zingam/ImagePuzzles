@@ -4,6 +4,7 @@
 #include "puzzlepixmap.h"
 #include "puzzleinfo.h"
 
+
 /* ****************************************************************************
  * FUNCTION POINTER DEFINITIONS
  * ***************************************************************************/
@@ -14,8 +15,9 @@
 ///     const PuzzleInfo::ErrorCodes getErrorCode();
 ///
 #define GetErrorCode(name) \
-    const PuzzleInfo::ErrorCodes (name) \
+    PuzzleInfo::ErrorCodes (name) \
     (void)
+
 typedef GetErrorCode(*getErrorCode_t);
 
 ///
@@ -48,7 +50,7 @@ typedef GetPuzzleInfo(*getPuzzleInfo_t);
 ///
 #define Run(name) \
     PuzzlePixmap* (name) \
-    (const void* const parameters, const PuzzleInfo::ImplementationType implementationType)
+    (void* parameters, PuzzleInfo::ImplementationType implementationType)
 typedef Run(*run_t);
 
 #endif // PUZZLEFUNCTIONS

@@ -4,12 +4,12 @@
 #include <iostream>
 
 Puzzle::Puzzle(QString path):
+    getErrorCode(nullptr),
+    run(nullptr),
     isLoaded(false),
     puzzleInfo(),
     puzzleTitle(),
     fullPathName(path),
-    run(nullptr),
-    getErrorCode(nullptr),
     getPuzzleGUID(nullptr),
     getPuzzleInfo(nullptr),
     library(path),
@@ -27,8 +27,8 @@ Puzzle::Puzzle(QString path):
         if (nullptr != this->getPuzzleGUID)
         {
             // Check if the loaded library is a puzzle
-            PuzzleGUID puzzleGUID = getPuzzleGUID();
-            int result = strcmp(this->GUID, puzzleGUID);
+            PuzzleGUID lpuzzleGUID = getPuzzleGUID();
+            int result = strcmp(this->GUID, lpuzzleGUID);
             // If the GUIDs are equal then it should be a puzzle
             bool isPuzzle = (result == 0);
             if (isPuzzle)

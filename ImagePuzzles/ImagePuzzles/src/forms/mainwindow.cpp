@@ -108,10 +108,10 @@ void MainWindow::setPuzzle(Puzzle* puzzle)
     if (nullptr != puzzle)
     {
         // Set Parameters line edit
-        const char* const parameters = puzzle->puzzleInfo->paramaters;
-        if (nullptr != parameters)
+        const char* const lparameters = puzzle->puzzleInfo->paramaters;
+        if (nullptr != lparameters)
         {
-            ui->lineEdit_Puzzles_Parameters->setText(parameters);
+            ui->lineEdit_Puzzles_Parameters->setText(lparameters);
         }
 
         // Set Implementations combobox
@@ -236,8 +236,8 @@ void MainWindow::on_action_Run_triggered()
         parameters.push_back(parameter.toStdString());
     }
 
-    const void* parameters_VoidPtr = reinterpret_cast<const void*>(&parameters);
-    PuzzleInfo::ImplementationType implementationType;
+    void* parameters_VoidPtr = reinterpret_cast<void*>(&parameters);
+    PuzzleInfo::ImplementationType implementationType = PuzzleInfo::CPlusPlus;
 
     QString implementationName = ui->comboBox_Implementations->currentText();
 
@@ -256,7 +256,7 @@ void MainWindow::on_action_Run_triggered()
     }
 
     PuzzlePixmap* puzzlePixmap =
-            puzzles.at(selectedPuzzleIndex)->run(parameters_VoidPtr, implementationType);
+            const_cast<Puzzle*>(puzzles.at(selectedPuzzleIndex))->run(parameters_VoidPtr, implementationType);
 
     PuzzleInfo::ErrorCodes errorCode = puzzles.at(selectedPuzzleIndex)->getErrorCode();
     switch(errorCode)
@@ -270,7 +270,12 @@ void MainWindow::on_action_Run_triggered()
                         + tr("<p class='message'>You have entered invalid parameters.</p>"
                              "<p class='info'>Default values will be used instead.</p>"),
                         QMessageBox::Ok, QMessageBox::NoButton);
-        } break;
+        }
+            break;
+        case PuzzleInfo::NoError:
+        {
+        }
+            break;
     }
 
     if (nullptr != puzzlePixmap)

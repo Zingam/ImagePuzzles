@@ -15,6 +15,8 @@ run_OpenCL(
         const std::vector<std::string>* const parameters,
         PuzzleInfo::ErrorCodes& errorCode)
 {
+    (void)parameters;
+    (void)errorCode;
     puzzlePixmap.buffer = nullptr;
     puzzlePixmap.size = 0;
 

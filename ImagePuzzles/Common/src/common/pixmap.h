@@ -1,6 +1,6 @@
 #ifndef PIXMAP_H
 #define PIXMAP_H
-this programming exersize
+
 namespace std
 {
     class iostream;
