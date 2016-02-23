@@ -79,16 +79,20 @@ run_CPlusPlus(
             (unsigned char*) malloc(pgmSize);
     puzzlePixmap.size = width * height;
 
-    auto pgmHeader_c_str = const_cast<char*>(pgmHeader.c_str());
+    auto pgmHeader_c_str_Ptr = const_cast<char*>(pgmHeader.c_str());
     // Keep the original pointer to the buffer untouched
     auto buffer_Ptr = puzzlePixmap.buffer;
 
     // Copy the header
-    while (*pgmHeader_c_str)
+    size_t index = 0;
+//    while (*pgmHeader_c_str_Ptr)
+    while (index < pgmHeaderSize)
     {
-        *(buffer_Ptr) = *(pgmHeader_c_str);
-        ++buffer_Ptr;
-        ++pgmHeader_c_str;
+        buffer_Ptr[index] = pgmHeader_c_str_Ptr[index];
+        ++index;
+//        *(buffer_Ptr) = *(pgmHeader_c_str);
+//        ++buffer_Ptr;
+//        ++pgmHeader_c_str;
     }
 
     // Generate the image data/pixels
@@ -96,23 +100,12 @@ run_CPlusPlus(
     {
         for (int row = 0; height > row; ++row)
         {
-            *(buffer_Ptr + column + row) = greyLevel;
+            buffer_Ptr[index + column + row] = greyLevel;
+//            *(buffer_Ptr + column + row) = greyLevel;
         }
     }
 
     puzzlePixmap.size = pgmSize;
-
-//    FILE* image;
-//    if ( (image = fopen( "alabala.pgm", "wb") ) == NULL )
-//    {
-//      printf("file %s could not be created\n");
-//    }
-
-//    fwrite(puzzlePixmap.buffer, 1, pgmSize, image);
-//    fclose (image);
-
-//    puzzlePixmap.buffer = nullptr;
-//    puzzlePixmap.size = 0;
 
     return puzzlePixmap;
 }
