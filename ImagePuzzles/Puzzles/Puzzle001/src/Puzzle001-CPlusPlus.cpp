@@ -79,17 +79,24 @@ run_CPlusPlus(
             (unsigned char*) malloc(pgmSize);
     puzzlePixmap.size = width * height;
 
-    char* pgmHeader_c_str = const_cast<char*>(pgmHeader.c_str());
+    auto pgmHeader_c_str = const_cast<char*>(pgmHeader.c_str());
+    // Keep the original pointer to the buffer untouched
+    auto buffer_Ptr = puzzlePixmap.buffer;
+
+    // Copy the header
     while (*pgmHeader_c_str)
     {
-        (*(puzzlePixmap.buffer++)) = (*(pgmHeader_c_str++));
+        *(buffer_Ptr) = *(pgmHeader_c_str);
+        ++buffer_Ptr;
+        ++pgmHeader_c_str;
     }
 
+    // Generate the image data/pixels
     for (int column = 0; width > column; ++column)
     {
         for (int row = 0; height > row; ++row)
         {
-            (*(puzzlePixmap.buffer + column + row)) = greyLevel;
+            *(buffer_Ptr + column + row) = greyLevel;
         }
     }
 
