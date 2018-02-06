@@ -1,8 +1,8 @@
-#include "Puzzle001.h"
+#include "Puzzle001.hpp"
 
 #include <vector>
 
-#include "common/puzzleinfo.h"
+#include "common/puzzleinfo.hpp"
 
 
 /* ****************************************************************************

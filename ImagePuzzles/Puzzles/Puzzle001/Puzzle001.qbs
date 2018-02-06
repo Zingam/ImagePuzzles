@@ -36,7 +36,7 @@ DynamicLibrary  {
         files: [
             "main-" + projectName + ".cpp",
             projectName + ".cpp",
-            projectName + ".h",
+            projectName + ".hpp",
             projectName + "-CPlusPlus.cpp",
             projectName + "-OpenCL.cpp",
             projectName + "-OpenGL.cpp",

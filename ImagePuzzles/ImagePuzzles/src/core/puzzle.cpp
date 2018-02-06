@@ -1,4 +1,4 @@
-#include "puzzle.h"
+#include "puzzle.hpp"
 
 #include <cstring>
 #include <iostream>

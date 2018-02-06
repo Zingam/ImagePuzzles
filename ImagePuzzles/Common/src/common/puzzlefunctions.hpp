@@ -1,8 +1,8 @@
-#ifndef PUZZLEFUNCTIONS
-#define PUZZLEFUNCTIONS
+#ifndef PUZZLEFUNCTIONS_HPP
+#define PUZZLEFUNCTIONS_HPP
 
 #include "puzzlepixmap.h"
-#include "puzzleinfo.h"
+#include "puzzleinfo.hpp"
 
 
 /* ****************************************************************************
@@ -53,5 +53,5 @@ typedef GetPuzzleInfo(*getPuzzleInfo_t);
     (void* parameters, PuzzleInfo::ImplementationType implementationType)
 typedef Run(*run_t);
 
-#endif // PUZZLEFUNCTIONS
+#endif // PUZZLEFUNCTIONS_HPP
 

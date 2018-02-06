@@ -1,5 +1,5 @@
-#ifndef CONSTANTS
-#define CONSTANTS
+#ifndef CONSTANTS_HPP
+#define CONSTANTS_HPP
 
 const auto res_fileName_ImageLogo = "assets/icons/icon.png";
 const auto res_applicationTitle =   "ImagePuzzles";
@@ -83,5 +83,5 @@ const auto res_dialog_About_Text =
         "    <p class='textFooter'><em>&copy; 2015 %2</em></p>"
         "</div>";
 
-#endif // CONSTANTS
+#endif // CONSTANTS_HPP
 

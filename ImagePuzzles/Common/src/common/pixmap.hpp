@@ -1,5 +1,5 @@
-#ifndef PIXMAP_H
-#define PIXMAP_H
+#ifndef PIXMAP_HPP
+#define PIXMAP_HPP
 
 namespace std
 {
@@ -29,4 +29,4 @@ public:
     void generatePPM(uint width, uint height, uchar colorLevel, void (&generator)(Pixmap& pixmap, const std::vector<std::string>* const parameters));
 };
 
-#endif // PIXMAP_H
+#endif // PIXMAP_HPP

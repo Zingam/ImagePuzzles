@@ -1,9 +1,9 @@
-#ifndef DIALOGABOUT_H
-#define DIALOGABOUT_H
+#ifndef DIALOGABOUT_HPP
+#define DIALOGABOUT_HPP
 
 #include <QDialog>
 
-#include "../application/applicationinfo.h"
+#include "../application/applicationinfo.hpp"
 
 namespace Ui {
 class Dialog_About;
@@ -28,4 +28,4 @@ private:
     Ui::Dialog_About *ui;
 };
 
-#endif // DIALOGABOUT_H
+#endif // DIALOGABOUT_HPP

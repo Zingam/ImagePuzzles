@@ -17,7 +17,7 @@ CppApplication {
         else if (cpp.compilerName.contains("g++")) {
             return "c++14";
         }
-        else return "c++17"
+        return "c++17"
     }
 
     cpp.cxxFlags: {
@@ -59,12 +59,12 @@ CppApplication {
     }
 
     files: [
-        "src/application/applicationinfo.h",
-        "src/application/constants.h",
-        "src/core/parseparameters.h",
+        "src/application/applicationinfo.hpp",
+        "src/application/constants.hpp",
+        "src/core/parseparameters.hpp",
         "src/core/puzzle.cpp",
-        "src/core/puzzle.h",
-        "src/core/puzzleloader.h",
+        "src/core/puzzle.hpp",
+        "src/core/puzzleloader.hpp",
         "src/main.cpp",
     ]
 
@@ -72,10 +72,10 @@ CppApplication {
         name: "Forms"
         files: [
             "src/forms/mainwindow.cpp",
-            "src/forms/mainwindow.h",
+            "src/forms/mainwindow.hpp",
             "src/forms/mainwindow.ui",
             "src/forms/dialogabout.cpp",
-            "src/forms/dialogabout.h",
+            "src/forms/dialogabout.hpp",
             "src/forms/dialogabout.ui",
         ]
     }

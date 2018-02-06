@@ -1,12 +1,12 @@
-#ifndef PUZZLELOADER_H
-#define PUZZLELOADER_H
+#ifndef PUZZLELOADER_HPP
+#define PUZZLELOADER_HPP
 
 #include <QtCore/QDir>
 #include <QtCore/QLibrary>
 #include <QtCore/QList>
 
-#include "../application/constants.h"
-#include "puzzle.h"
+#include "../application/constants.hpp"
+#include "puzzle.hpp"
 
 Puzzle* loadPuzzle(QString fullPathName)
 {
@@ -64,5 +64,5 @@ QList<Puzzle*> loadPuzzles()
     return puzzles;
 }
 
-#endif // PUZZLELOADER_H
+#endif // PUZZLELOADER_HPP
 

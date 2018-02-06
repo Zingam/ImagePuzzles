@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOW_HPP
+#define MAINWINDOW_HPP
 
 #include <string>
 #include <vector>
@@ -7,7 +7,7 @@
 #include <QtCore/QList>
 #include <QtWidgets/QMainWindow>
 
-#include "../application/applicationinfo.h"
+#include "../application/applicationinfo.hpp"
 
 
 namespace Ui {
@@ -50,4 +50,4 @@ private:
     std::vector<std::string> parameters;
 };
 
-#endif // MAINWINDOW_H
+#endif // MAINWINDOW_HPP

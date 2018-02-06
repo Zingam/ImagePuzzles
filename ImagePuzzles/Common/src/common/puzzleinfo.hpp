@@ -1,5 +1,5 @@
-#ifndef PUZZLEINFO
-#define PUZZLEINFO
+#ifndef PUZZLEINFO_HPP
+#define PUZZLEINFO_HPP
 
 #define IMPLEMENTATION_TYPE_CPlusPlus "C++"
 #define IMPLEMENTATION_TYPE_OpenCL "OpenCL"
@@ -35,5 +35,5 @@ typedef std::vector<PuzzleInfo::ImplementationType> Implementations;
 typedef const char* PuzzleGUID;
 const PuzzleGUID puzzleGUID = "5a5a20a2-f5ef-4d21-9661-0942251e97a8";
 
-#endif // PUZZLEINFO
+#endif // PUZZLEINFO_HPP
 

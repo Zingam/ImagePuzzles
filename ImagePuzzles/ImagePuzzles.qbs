@@ -9,4 +9,3 @@ Project {
         "Puzzles/Puzzle003/Puzzle003.qbs"
     ]
 }
-

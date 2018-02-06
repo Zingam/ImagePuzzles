@@ -1,5 +1,5 @@
-#ifndef CSSSTYLES
-#define CSSSTYLES
+#ifndef CSSSTYLES_HPP
+#define CSSSTYLES_HPP
 
 #define CSS_STYLES \
     "<style>" \
@@ -26,5 +26,5 @@
     "}" \
     "</style>"
 
-#endif // CSSSTYLES
+#endif // CSSSTYLES_HPP
 

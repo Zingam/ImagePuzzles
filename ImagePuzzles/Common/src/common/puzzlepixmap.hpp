@@ -1,5 +1,5 @@
-#ifndef PARAMETERS
-#define PARAMETERS
+#ifndef PUZZLEPIXMAP_HPP
+#define PUZZLEPIXMAP_HPP
 
 struct PuzzlePixmap
 {
@@ -7,5 +7,5 @@ struct PuzzlePixmap
     unsigned char* buffer;
 };
 
-#endif // PARAMETERS
+#endif // PUZZLEPIXMAP_HPP
 

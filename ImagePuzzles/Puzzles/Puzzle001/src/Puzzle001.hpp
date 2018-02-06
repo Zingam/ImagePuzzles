@@ -1,12 +1,12 @@
-#ifndef HEADER
-#define HEADER
+#ifndef PUZZLE001_HPP
+#define PUZZLE001_HPP
 
 #include <string>
 #include <vector>
 
-#include "common/cssstyles.h"
-#include "common/puzzleinfo.h"
-#include "common/puzzlepixmap.h"
+#include "common/cssstyles.hpp"
+#include "common/puzzleinfo.hpp"
+#include "common/puzzlepixmap.hpp"
 #include "memory"
 
 
@@ -65,5 +65,5 @@ run_OpenGL(
         const std::vector<std::string>* const parameters,
         PuzzleInfo::ErrorCodes& errorCode);
 
-#endif // HEADER
+#endif // PUZZLE001_HPP
 

@@ -1,10 +1,10 @@
-#include "Puzzle001.h"
+#include "Puzzle001.hpp"
 
 #include <iostream>
 #include <stdexcept>
 #include <vector>
 
-#include "common/puzzleinfo.h"
+#include "common/puzzleinfo.hpp"
 
 
 /* ****************************************************************************

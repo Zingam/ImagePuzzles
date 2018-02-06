@@ -2,7 +2,7 @@
     <qresource prefix="/icons">
         <file alias="Reload">icons/ic_refresh_black_48dp.png</file>
         <file alias="Exit">icons/ic_settings_power_black_48dp.png</file>
-        <file alias="About">icons/ic_help_black_48dp.png</file>
+        <file alias="About">icons/ic_Help_black_48dp.png</file>
         <file alias="Run">icons/ic_play_circle_outline_black_48dp.png</file>
         <file alias="Save As">icons/ic_save_black_48dp.png</file>
         <file alias="Icon">icons/Roccoor01.png</file>

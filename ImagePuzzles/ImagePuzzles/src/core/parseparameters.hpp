@@ -1,5 +1,5 @@
-#ifndef PARSEPARAMETERS
-#define PARSEPARAMETERS
+#ifndef PARSEPARAMETERS_HPP
+#define PARSEPARAMETERS_HPP
 
 #include <vector>
 
@@ -27,5 +27,5 @@ parseParameters(QString parameterList)
 }
 
 
-#endif // PARSEPARAMETERS
+#endif // PARSEPARAMETERS_HPP
 

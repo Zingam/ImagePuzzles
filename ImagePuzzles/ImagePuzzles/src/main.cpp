@@ -2,7 +2,7 @@
 #include <QtCore/QLibrary>
 #include <QtWidgets/QApplication>
 
-#include "forms/mainwindow.h"
+#include "forms/mainwindow.hpp"
 
 
 int main(int argc, char *argv[])

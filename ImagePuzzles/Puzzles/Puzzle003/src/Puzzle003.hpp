@@ -1,7 +1,7 @@
-#ifndef HEADER
-#define HEADER
+#ifndef PUZZLE003_HPP
+#define PUZZLE003_HPP
 
-#include "common/cssstyles.h"
+#include "common/cssstyles.hpp"
 
 /* ****************************************************************************
  * CONSTANTS
@@ -28,5 +28,5 @@ const char* const text =
 int width = 200;
 int height = 400;
 
-#endif // HEADER
+#endif // PUZZLE003_HPP
 

@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "mainwindow.hpp"
 #include "ui_mainwindow.h"
 
 #include <iostream>
@@ -10,13 +10,13 @@
 #include <QtGui/QCloseEvent>
 #include <QtWidgets/QMessageBox>
 
-#include "../forms/dialogabout.h"
+#include "../forms/dialogabout.hpp"
 
-#include "../application/constants.h"
-#include "../core/puzzle.h"
-#include "../core/puzzleloader.h"
+#include "../application/constants.hpp"
+#include "../core/puzzle.hpp"
+#include "../core/puzzleloader.hpp"
 
-#include "common/puzzlepixmap.h"
+#include "common/puzzlepixmap.hpp"
 
 
 MainWindow::MainWindow(QWidget* parent) :

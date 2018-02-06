@@ -1,11 +1,11 @@
-#ifndef PUZZLE_H
-#define PUZZLE_H
+#ifndef PUZZLE_HPP
+#define PUZZLE_HPP
 
 #include <QtCore/QLibrary>
 #include <QtCore/QString>
 
-#include "common/puzzlefunctions.h"
-#include "common/puzzleinfo.h"
+#include "common/puzzlefunctions.hpp"
+#include "common/puzzleinfo.hpp"
 
 
 /* ****************************************************************************
@@ -35,4 +35,4 @@ private:
     PuzzleGUID GUID;
 };
 
-#endif // PUZZLE_H
+#endif // PUZZLE_HPP

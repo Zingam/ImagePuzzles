@@ -1,16 +1,16 @@
 #include <string>
 #include <iostream>
 
-#include "header-Puzzle003.h"
+#include "Puzzle003.hpp"
 
 #include <string>
 #include <vector>
 #include <map>
 
-#include "common/apiexport.h"
-#include "common/puzzlefunctions.h"
-#include "common/puzzleinfo.h"
-#include "common/puzzlepixmap.h"
+#include "common/apiexport.hpp"
+#include "common/puzzlefunctions.hpp"
+#include "common/puzzleinfo.hpp"
+#include "common/puzzlepixmap.hpp"
 
 
 /* ****************************************************************************

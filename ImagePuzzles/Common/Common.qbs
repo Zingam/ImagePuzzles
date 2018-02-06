@@ -5,13 +5,13 @@ StaticLibrary {
     name: "Common"
     
     files: [
-        "src/common/apiexport.h",
-        "src/common/cssstyles.h",
+        "src/common/apiexport.hpp",
         "src/common/pixmap.cpp",
-        "src/common/pixmap.h",
-        "src/common/puzzlefunctions.h",
-        "src/common/puzzleinfo.h",
-        "src/common/puzzlepixmap.h",
+        "src/common/pixmap.hpp",
+        "src/common/cssstyles.hpp",
+        "src/common/puzzlefunctions.hpp",
+        "src/common/puzzleinfo.hpp",
+        "src/common/puzzlepixmap.hpp",
     ]
 
     Export {

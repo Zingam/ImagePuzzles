@@ -34,8 +34,8 @@ DynamicLibrary  {
         name: projectName
         prefix: "src/"
         files: [
-            "header-" + projectName + ".h",
             "main-" + projectName + ".cpp",
+            projectName + ".hpp",
         ]
     }
 
@@ -46,4 +46,3 @@ DynamicLibrary  {
         qbs.installDir: destinationDirectoryPath
     }
 }
-

@@ -1,5 +1,5 @@
-#ifndef APPLICATIONINFO
-#define APPLICATIONINFO
+#ifndef APPLICATIONINFO_HPP
+#define APPLICATIONINFO_HPP
 
 struct ApplicationInfo
 {
@@ -12,5 +12,5 @@ struct ApplicationInfo
     {}
 };
 
-#endif // APPLICATIONINFO
+#endif // APPLICATIONINFO_HPP
 

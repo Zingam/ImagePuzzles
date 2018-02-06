@@ -5,11 +5,11 @@
 #include <vector>
 #include <map>
 
-#include "Puzzle001.h"
+#include "Puzzle001.hpp"
 
-#include "common/apiexport.h"
-#include "common/puzzlefunctions.h"
-#include "common/puzzleinfo.h"
+#include "common/apiexport.hpp"
+#include "common/puzzlefunctions.hpp"
+#include "common/puzzleinfo.hpp"
 
 
 /* ****************************************************************************
