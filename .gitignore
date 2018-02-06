@@ -231,5 +231,6 @@ __tools__/
 *.qm
 *.exe
 *.user.*
+*.autosave
 
 

@@ -11,11 +11,6 @@ CppApplication {
 
     // Compiler flags and settings
     cpp.cxxLanguageVersion: {
-        console.log ("fasdfasdfasdf")
-        console.debug("s: stringasdfasdfasd")
-        console.error("asdfasdfasdfasdfas")
-        print ("help mp")
-
         if (cpp.compilerName.contains("clang++")) {
             return "c++14";
         }
