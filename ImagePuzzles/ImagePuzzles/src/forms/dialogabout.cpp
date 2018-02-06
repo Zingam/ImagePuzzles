@@ -1,10 +1,9 @@
 #include "dialogabout.hpp"
 #include "ui_dialogabout.h"
 
-#include <QtGui/QFontMetrics>
-
-
 #include "../application/constants.hpp"
+
+#include <QtGui/QFontMetrics>
 
 Dialog_About::Dialog_About(
         const ApplicationInfo& applicationInfo,

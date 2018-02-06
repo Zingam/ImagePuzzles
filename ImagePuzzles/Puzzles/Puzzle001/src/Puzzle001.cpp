@@ -1,13 +1,13 @@
 #include "Puzzle001.hpp"
 
+#include <common/puzzleinfo.hpp>
+
 #include <iostream>
 #include <vector>
 
-#include "common/puzzleinfo.hpp"
-
-/* ****************************************************************************
- * FUNCTIONS
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
 
 std::string&
 getDefaultParametersString(std::string& defaultParametersString)
@@ -24,7 +24,7 @@ getDefaultParametersString(std::string& defaultParametersString)
 }
 
 std::vector<PuzzleInfo::ImplementationType>&
-getImplementations(Implementations& implementations)
+getImplementations(PuzzleInfo::Implementations& implementations)
 {
     implementations.push_back(PuzzleInfo::CPlusPlus);
     implementations.push_back(PuzzleInfo::OpenCL);
@@ -32,7 +32,3 @@ getImplementations(Implementations& implementations)
 
     return implementations;
 }
-
-/* ****************************************************************************
- * FUNCTIONS
- * ***************************************************************************/

@@ -1,30 +1,26 @@
-#include <string>
-#include <iostream>
-
 #include "Puzzle003.hpp"
 
+#include <common/apiexport.hpp>
+#include <common/puzzlefunctions.hpp>
+#include <common/puzzleinfo.hpp>
+
+#include <iostream>
 #include <string>
 #include <vector>
-#include <map>
 
-#include "common/apiexport.hpp"
-#include "common/puzzlefunctions.hpp"
-#include "common/puzzleinfo.hpp"
-#include "common/puzzlepixmap.hpp"
+////////////////////////////////////////////////////////////////////////////////
+// GLOBAL VARIABLES
+////////////////////////////////////////////////////////////////////////////////
 
-
-/* ****************************************************************************
- * GLOBAL VARIABLES
- * ***************************************************************************/
 static PuzzleInfo* puzzleInfo;
 static PuzzleInfo::ErrorCodes errorCode = PuzzleInfo::ErrorCodes::NoError;
 static std::string defaultParametersString;
-static Implementations implementations;
+static PuzzleInfo::Implementations implementations;
 static PuzzlePixmap puzzlePixmap;
 
-/* ****************************************************************************
- * FUNCTIONS
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
 
 std::string&
 getDefaultParametersString()
@@ -48,9 +44,9 @@ getImplementations()
     return implementations;
 }
 
-/* ****************************************************************************
- * EXPORTED FUNCTIONS
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// EXPORTED FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
 
 ///
 /// \brief Returns the last error code
@@ -99,7 +95,7 @@ GetPuzzleInfo(getPuzzleInfo)    // void
     puzzleInfo->parametersInfo = const_cast<char*>(parametersInfo);
     puzzleInfo->text = const_cast<char*>(text);
 
-    Implementations& implementations = getImplementations();
+    PuzzleInfo::Implementations& implementations = getImplementations();
     puzzleInfo->implementations = &implementations;
 
     return puzzleInfo;

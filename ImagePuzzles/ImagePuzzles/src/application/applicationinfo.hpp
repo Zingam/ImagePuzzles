@@ -13,4 +13,3 @@ struct ApplicationInfo
 };
 
 #endif // APPLICATIONINFO_HPP
-

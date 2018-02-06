@@ -220,7 +220,8 @@ pip-log.txt
 
 # Directories
 build-*/
-__build-*
+__build-*/
+__install-*/
 bin__output__/
 __doc__/images/
 __output__/

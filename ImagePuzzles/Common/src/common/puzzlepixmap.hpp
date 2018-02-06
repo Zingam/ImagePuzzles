@@ -8,4 +8,3 @@ struct PuzzlePixmap
 };
 
 #endif // PUZZLEPIXMAP_HPP
-

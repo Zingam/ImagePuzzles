@@ -84,4 +84,3 @@ const auto res_dialog_About_Text =
         "</div>";
 
 #endif // CONSTANTS_HPP
-

@@ -1,12 +1,12 @@
 #ifndef PARSEPARAMETERS_HPP
 #define PARSEPARAMETERS_HPP
 
-#include <vector>
+#include "common/FunctionType.h"
 
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
-#include "common/FunctionType.h"
+#include <vector>
 
 std::vector<Parameter>
 parseParameters(QString parameterList)
@@ -26,6 +26,4 @@ parseParameters(QString parameterList)
     return paramaters;
 }
 
-
 #endif // PARSEPARAMETERS_HPP
-

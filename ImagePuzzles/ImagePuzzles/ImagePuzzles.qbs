@@ -1,6 +1,5 @@
 import qbs 1.0
 
-
 CppApplication {
     name: "ImagePuzzles"
     type: "application" // To suppress bundle generation on Mac

@@ -1,18 +1,17 @@
 #ifndef PUZZLE001_HPP
 #define PUZZLE001_HPP
 
+#include <common/cssstyles.hpp>
+#include <common/puzzleinfo.hpp>
+#include <common/puzzlepixmap.hpp>
+
 #include <string>
 #include <vector>
 
-#include "common/cssstyles.hpp"
-#include "common/puzzleinfo.hpp"
-#include "common/puzzlepixmap.hpp"
-#include "memory"
+////////////////////////////////////////////////////////////////////////////////
+// CONSTANTS
+////////////////////////////////////////////////////////////////////////////////
 
-
-/* ****************************************************************************
- * CONSTANTS
- * ***************************************************************************/
 const char* const number =
         "001";
 const char* const name =
@@ -33,19 +32,19 @@ const int widthDefault = 200;
 const int heightDefault = 300;
 const int greyLevelDefault = 240;
 
+////////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
 
-/* ****************************************************************************
- * FUNCTIONS
- * ***************************************************************************/
 std::string&
 getDefaultParametersString(std::string& defaultParametersString);
 
 std::vector<PuzzleInfo::ImplementationType>&
-getImplementations(Implementations& implementations);
+getImplementations(PuzzleInfo::Implementations& implementations);
 
-/* ****************************************************************************
- * FUNCTIONS
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
 
 PuzzlePixmap&
 run_CPlusPlus(
@@ -66,4 +65,3 @@ run_OpenGL(
         PuzzleInfo::ErrorCodes& errorCode);
 
 #endif // PUZZLE001_HPP
-

@@ -1,7 +1,7 @@
 #ifndef PUZZLEFUNCTIONS_HPP
 #define PUZZLEFUNCTIONS_HPP
 
-#include "puzzlepixmap.h"
+#include "puzzlepixmap.hpp"
 #include "puzzleinfo.hpp"
 
 
@@ -54,4 +54,3 @@ typedef GetPuzzleInfo(*getPuzzleInfo_t);
 typedef Run(*run_t);
 
 #endif // PUZZLEFUNCTIONS_HPP
-

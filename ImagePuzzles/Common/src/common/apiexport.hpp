@@ -8,4 +8,3 @@
 #endif
 
 #endif // LIBRARY_HPP
-

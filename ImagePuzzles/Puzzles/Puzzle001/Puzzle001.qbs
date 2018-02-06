@@ -1,6 +1,6 @@
 import qbs
 
-DynamicLibrary  {
+DynamicLibrary {
     property var projectName: "Puzzle001";
 
     // Project settings
@@ -18,16 +18,15 @@ DynamicLibrary  {
     property var destinationDirectoryPath:  qbs.buildVariant + "/Puzzles";
 
     // Compiler flags and settings
-    cpp.cxxFlags: {
-        // Clang should be detected first
+    cpp.cxxLanguageVersion: {
         if (cpp.compilerName.contains("clang++")) {
-            return [ "-std=c++14" ]
+            return "c++14";
         }
         else if (cpp.compilerName.contains("g++")) {
-            return [ "-std=c++14" ]
+            return "c++14";
         }
+        return "c++17"
     }
-    cpp.cxxLanguageVersion: "c++17"
 
     // Files groups
     Group {

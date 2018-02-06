@@ -1,23 +1,21 @@
 #include "mainwindow.hpp"
 #include "ui_mainwindow.h"
 
-#include <iostream>
-#include <map>
-#include <vector>
-
-
-#include <QtCore/QDebug>
-#include <QtGui/QCloseEvent>
-#include <QtWidgets/QMessageBox>
-
 #include "../forms/dialogabout.hpp"
 
 #include "../application/constants.hpp"
 #include "../core/puzzle.hpp"
 #include "../core/puzzleloader.hpp"
 
-#include "common/puzzlepixmap.hpp"
+#include <common/puzzlepixmap.hpp>
 
+#include <QtCore/QDebug>
+#include <QtGui/QCloseEvent>
+#include <QtWidgets/QMessageBox>
+
+#include <iostream>
+#include <map>
+#include <vector>
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
@@ -25,9 +23,9 @@ MainWindow::MainWindow(QWidget* parent) :
     applicationInfo(res_applicationTitle, res_authorName),
     pixmap_ImageLogo(res_fileName_ImageLogo)
 {
-    /* ************************************************************************
-     * Setup UI
-     * ***********************************************************************/
+    ////////////////////////////////////////////////////////////////////////////
+    // Setup UI
+    ////////////////////////////////////////////////////////////////////////////
     ui->setupUi(this);
 
     // Set the MainWindow properties
@@ -53,9 +51,9 @@ MainWindow::MainWindow(QWidget* parent) :
                 ui->pushButton_Puzzles_Run, &QPushButton::clicked,
                 this, &MainWindow::on_action_Run_triggered);
 
-    /* ************************************************************************
-     * Load the Puzzles
-     * ***********************************************************************/
+    ////////////////////////////////////////////////////////////////////////////
+    // Load the Puzzles
+    ////////////////////////////////////////////////////////////////////////////
     this->puzzles = loadPuzzles();
 
     for (Puzzle* puzzle: this->puzzles)
@@ -73,9 +71,9 @@ MainWindow::~MainWindow()
 }
 
 
-/* ***************************************************************************
- * PRIVATE: METHODS
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// PRIVATE: METHODS
+////////////////////////////////////////////////////////////////////////////////
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     QMessageBox messageBox;
@@ -116,8 +114,8 @@ void MainWindow::setPuzzle(Puzzle* puzzle)
 
         // Set Implementations combobox
         ui->comboBox_Implementations->clear();
-        const Implementations* implementations
-                = (Implementations*)(puzzle->puzzleInfo->implementations);
+        const PuzzleInfo::Implementations* implementations
+                = puzzle->puzzleInfo->implementations;
 
         for(PuzzleInfo::ImplementationType implementation: (*implementations))
         {
@@ -155,10 +153,10 @@ void MainWindow::setPuzzle(Puzzle* puzzle)
     }
 }
 
-/* ***************************************************************************
- * PRIVATE: SLOTS
- * ***************************************************************************/
-///
+////////////////////////////////////////////////////////////////////////////////
+// PRIVATE: SLOTS
+////////////////////////////////////////////////////////////////////////////////
+
 /// \brief MainWindow::on_action_About_triggered
 /// Displays the About dialog in the Help menu. This slot gets automatically
 /// connected to the action Ui::Ui_MainWindow::action_About.
@@ -198,17 +196,18 @@ void MainWindow::on_action_Reload_triggered()
         return;
     }
 
-    qDebug() << "Reload";
-
     int selectedPuzzleIndex = ui->comboBox_Puzzles->currentIndex();
 
     Puzzle* puzzle = this->puzzles[selectedPuzzleIndex];
     QString fullPathName = puzzle->fullPathName;
+    QFileInfo file(fullPathName);
+
+    qDebug() << "Reloading:         " << file.fileName();
 
     delete this->puzzles[selectedPuzzleIndex];
     this->puzzles[selectedPuzzleIndex] = nullptr;
 
-    puzzle = loadPuzzle(fullPathName);
+    puzzle = loadPuzzle(file);
     if (nullptr != puzzle)
     {
         ui->comboBox_Puzzles->setItemText(selectedPuzzleIndex, puzzle->puzzleTitle);

@@ -1,9 +1,8 @@
 import qbs 1.0
 
-
 StaticLibrary {
     name: "Common"
-    
+
     files: [
         "src/common/apiexport.hpp",
         "src/common/pixmap.cpp",
@@ -21,4 +20,3 @@ StaticLibrary {
         cpp.includePaths: "src/."
     }
 }
-

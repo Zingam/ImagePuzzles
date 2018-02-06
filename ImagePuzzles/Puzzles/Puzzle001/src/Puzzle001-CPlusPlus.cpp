@@ -1,15 +1,14 @@
 #include "Puzzle001.hpp"
 
+#include <common/puzzleinfo.hpp>
+
 #include <iostream>
 #include <stdexcept>
 #include <vector>
 
-#include "common/puzzleinfo.hpp"
-
-
-/* ****************************************************************************
- * FUNCTIONS
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
 
 PuzzlePixmap&
 run_CPlusPlus(
@@ -85,14 +84,10 @@ run_CPlusPlus(
 
     // Copy the header
     size_t index = 0;
-//    while (*pgmHeader_c_str_Ptr)
     while (index < pgmHeaderSize)
     {
         buffer_Ptr[index] = pgmHeader_c_str_Ptr[index];
         ++index;
-//        *(buffer_Ptr) = *(pgmHeader_c_str);
-//        ++buffer_Ptr;
-//        ++pgmHeader_c_str;
     }
 
     // Generate the image data/pixels
@@ -101,7 +96,6 @@ run_CPlusPlus(
         for (int row = 0; height > row; ++row)
         {
             buffer_Ptr[index + column + row] = greyLevel;
-//            *(buffer_Ptr + column + row) = greyLevel;
         }
     }
 

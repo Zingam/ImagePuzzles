@@ -1,9 +1,7 @@
-#include "pixmap.h"
+#include "pixmap.hpp"
 
 Pixmap::Pixmap()
-{
-
-}
+{}
 
 Pixmap::~Pixmap()
 {
@@ -120,4 +118,3 @@ void Pixmap::generatePPM(
 
     (*generator)(this, parameters);
 }
-

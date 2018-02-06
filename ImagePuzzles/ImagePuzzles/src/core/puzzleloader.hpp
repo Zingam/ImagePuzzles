@@ -1,30 +1,33 @@
 #ifndef PUZZLELOADER_HPP
 #define PUZZLELOADER_HPP
 
+#include "../application/constants.hpp"
+#include "puzzle.hpp"
+
+#include <QtCore/QDebug>
 #include <QtCore/QDir>
 #include <QtCore/QLibrary>
 #include <QtCore/QList>
 
-#include "../application/constants.hpp"
-#include "puzzle.hpp"
+#include <iostream>
 
-Puzzle* loadPuzzle(QString fullPathName)
+Puzzle* loadPuzzle(QFileInfo& file)
 {
-    bool isLibrary = QLibrary::isLibrary(fullPathName);
+    bool isLibrary = QLibrary::isLibrary(file.filePath());
 
     if (isLibrary)
     {
-        Puzzle* puzzle = new Puzzle(fullPathName);
+        Puzzle* puzzle = new Puzzle(file.filePath());
 
         if (puzzle->isLoaded)
         {
-            qDebug() << "Successully re-loaded:" << fullPathName;
-            std::cout << "Problem!!!" << std::endl;
+            qDebug() << "Successully loaded:" << file.fileName();
+
             return puzzle;
         }
         else
         {
-            qDebug() << "Failed to re-load:    " << fullPathName << "(not a Puzzle)";
+            qDebug() << "Failed to load:    " << file.fileName() << " (not a Puzzle)";
         }
     }
 
@@ -41,28 +44,32 @@ QList<Puzzle*> loadPuzzles()
 
     for (QString& fileName: fileNames)
     {
-        QString libraryPathName = puzzlesPathName + "/" + fileName;
-        bool isLibrary = QLibrary::isLibrary(libraryPathName);
-
-        if (isLibrary)
+        auto file = QFileInfo(puzzlesPathName + "/" + fileName);
+        auto puzzle = loadPuzzle(file);
+        if (nullptr != puzzle)
         {
-            Puzzle* puzzle = new Puzzle(libraryPathName);
-
-            if (puzzle->isLoaded)
-            {
-                qDebug() << "Successully loaded:" << fileName;
-
-                puzzles.push_back(puzzle);
-            }
-            else
-            {
-                qDebug() << "Failed to load:    " << fileName << "(not a Puzzle)";
-            }
+            puzzles.push_back(puzzle);
         }
+//        bool isLibrary = QLibrary::isLibrary(libraryPathName);
+
+//        if (isLibrary)
+//        {
+//            Puzzle* puzzle = new Puzzle(libraryPathName);
+
+//            if (puzzle->isLoaded)
+//            {
+//                qDebug() << "Successully loaded:" << fileName;
+
+//                puzzles.push_back(puzzle);
+//            }
+//            else
+//            {
+//                qDebug() << "Failed to load:    " << fileName << "(not a Puzzle)";
+//            }
+//        }
     }
 
     return puzzles;
 }
 
 #endif // PUZZLELOADER_HPP
-

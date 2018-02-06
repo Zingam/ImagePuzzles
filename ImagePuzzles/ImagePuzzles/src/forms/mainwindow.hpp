@@ -1,14 +1,13 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
-#include <string>
-#include <vector>
+#include "../application/applicationinfo.hpp"
 
 #include <QtCore/QList>
 #include <QtWidgets/QMainWindow>
 
-#include "../application/applicationinfo.hpp"
-
+#include <string>
+#include <vector>
 
 namespace Ui {
 class MainWindow;

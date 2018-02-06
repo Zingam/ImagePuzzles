@@ -1,29 +1,26 @@
-#include <string>
-#include <iostream>
-
-#include <string>
-#include <vector>
-#include <map>
-
 #include "Puzzle001.hpp"
 
-#include "common/apiexport.hpp"
-#include "common/puzzlefunctions.hpp"
-#include "common/puzzleinfo.hpp"
+#include <common/apiexport.hpp>
+#include <common/puzzlefunctions.hpp>
+#include <common/puzzleinfo.hpp>
 
+#include <iostream>
+#include <string>
+#include <vector>
 
-/* ****************************************************************************
- * GLOBAL VARIABLES
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// GLOBAL VARIABLES
+////////////////////////////////////////////////////////////////////////////////
+
 static PuzzleInfo* puzzleInfo;
 static PuzzleInfo::ErrorCodes errorCode = PuzzleInfo::ErrorCodes::NoError;
 static std::string defaultParametersString;
-static Implementations implementations;
+static PuzzleInfo::Implementations implementations;
 static PuzzlePixmap puzzlePixmap;
 
-/* ****************************************************************************
- * EXPORTED FUNCTIONS
- * ***************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+// EXPORTED FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
 
 ///
 /// \brief Returns the last error code
@@ -65,15 +62,13 @@ GetPuzzleInfo(getPuzzleInfo)    // void
 {
     puzzleInfo = new PuzzleInfo();
 
-    puzzleInfo->number = const_cast<char*>(number);
-    puzzleInfo->name = const_cast<char*>(name);
+    puzzleInfo->number = number;
+    puzzleInfo->name = name;
     std::string& parameters = getDefaultParametersString(defaultParametersString);
     puzzleInfo->paramaters = parameters.c_str();
-    puzzleInfo->parametersInfo = const_cast<char*>(parametersInfo);
-    puzzleInfo->text = const_cast<char*>(text);
-
-    Implementations& implementations_Ref = getImplementations(implementations);
-    puzzleInfo->implementations = &implementations_Ref;
+    puzzleInfo->parametersInfo = parametersInfo;
+    puzzleInfo->text = text;
+    puzzleInfo->implementations = &getImplementations(implementations);
 
     return puzzleInfo;
 }
@@ -101,8 +96,9 @@ Run(run)                        // const void* const parameters,
         {
             PuzzlePixmap& temp = run_CPlusPlus(puzzlePixmap, parametersString, errorCode);
             puzzlePixmap = temp;
-            std::cout << "Output";
-        } break;
+
+            break;
+        }
         case PuzzleInfo::OpenCL:
         {
             puzzlePixmap = run_OpenCL(puzzlePixmap, parametersString, errorCode);

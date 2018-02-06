@@ -85,4 +85,3 @@ Puzzle::~Puzzle()
 
     delete this->puzzleInfo;
 }
-
