@@ -6,15 +6,23 @@ CppApplication {
     type: "application" // To suppress bundle generation on Mac
     consoleApplication: false
 
-    property var destinationDirectoryPath: "../../../__build-output";
+    // Properties
+    property var destinationDirectoryPath: qbs.buildVariant;
 
+    // Compiler flags and settings
     cpp.cxxLanguageVersion: {
+        console.log ("fasdfasdfasdf")
+        console.debug("s: stringasdfasdfasd")
+        console.error("asdfasdfasdfasdfas")
+        print ("help mp")
+
         if (cpp.compilerName.contains("clang++")) {
             return "c++14";
         }
         else if (cpp.compilerName.contains("g++")) {
             return "c++14";
         }
+        else return "c++17"
     }
 
     cpp.cxxFlags: {
@@ -27,7 +35,7 @@ CppApplication {
                         "/Gm-",    /* Disables minimal rebuild.*/
                         //"/GR-",    /* Turn off run-time type information (RTTI). */
                         //"/EHa-",   /* Turn off exception-handling model that catches both asynchronous (structured) and synchronous (C++) exceptions. */
-                        "/Od",     /* Turns off all optimizations in the program and speeds compilation. */
+                        //"/Od",     /* Turns off all optimizations in the program and speeds compilation. */
                         "/Oi",     /* Generates intrinsic functions. */
                         "/WX",     /* Treat all compiler warnings as errors.  */
                         "/W4",     /* Set warning Level 4 (recommended for all new projects). */
@@ -101,4 +109,3 @@ CppApplication {
         qbs.installDir: destinationDirectoryPath
     }
 }
-

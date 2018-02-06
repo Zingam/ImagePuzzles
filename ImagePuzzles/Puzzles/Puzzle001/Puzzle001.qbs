@@ -5,7 +5,6 @@ DynamicLibrary  {
 
     // Project settings
     name: projectName
-//    type: "dynamiclibrary" // To suppress bundle generation on Mac
 
     Depends {
         name: "cpp"
@@ -16,7 +15,7 @@ DynamicLibrary  {
     }
 
     // Properties
-    property var destinationDirectoryPath: "../../../__build-output/Puzzles/";
+    property var destinationDirectoryPath:  qbs.buildVariant + "/Puzzles";
 
     // Compiler flags and settings
     cpp.cxxFlags: {
@@ -28,6 +27,7 @@ DynamicLibrary  {
             return [ "-std=c++14" ]
         }
     }
+    cpp.cxxLanguageVersion: "c++17"
 
     // Files groups
     Group {
@@ -50,4 +50,3 @@ DynamicLibrary  {
         qbs.installDir: destinationDirectoryPath
     }
 }
-
