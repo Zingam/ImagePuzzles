@@ -7,6 +7,7 @@
 #include "common/cssstyles.h"
 #include "common/puzzleinfo.h"
 #include "common/puzzlepixmap.h"
+#include "memory"
 
 
 /* ****************************************************************************

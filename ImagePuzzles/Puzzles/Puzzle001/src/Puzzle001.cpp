@@ -1,5 +1,6 @@
 #include "Puzzle001.h"
 
+#include <iostream>
 #include <vector>
 
 #include "common/puzzleinfo.h"
@@ -28,7 +29,11 @@ getImplementations(Implementations& implementations)
     implementations.push_back(PuzzleInfo::CPlusPlus);
     implementations.push_back(PuzzleInfo::OpenCL);
     implementations.push_back(PuzzleInfo::OpenGL);
-
+std::unique_ptr<int> i = nullptr;
+    if (auto i = 1; i > 0)
+    {
+        std::cout << "fasdfasd";
+    }
     return implementations;
 }
 

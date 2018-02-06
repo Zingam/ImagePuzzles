@@ -78,6 +78,11 @@ Puzzle::Puzzle(QString path):
 
 Puzzle::~Puzzle()
 {
+    if (this->library.isLoaded())
+    {
+        this->library.unload();
+    }
+
     delete this->puzzleInfo;
 }
 

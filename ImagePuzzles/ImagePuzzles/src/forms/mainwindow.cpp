@@ -187,35 +187,39 @@ void MainWindow::on_action_Exit_triggered()
 
 void MainWindow::on_action_Reload_triggered()
 {
+    if (auto result = QMessageBox::question(
+                this,
+                tr("Reloading Puzzle"),
+                tr("Continue reloading the Puzzle?"),
+                QMessageBox::Yes,
+                QMessageBox::No);
+        QMessageBox::No == result)
+    {
+        return;
+    }
+
     qDebug() << "Reload";
 
-//    int selectedPuzzleIndex = ui->comboBox_Puzzles->currentIndex();
+    int selectedPuzzleIndex = ui->comboBox_Puzzles->currentIndex();
 
-//    Puzzle* puzzle = this->puzzles.at(selectedPuzzleIndex);
-//    QString fullPathName = puzzle->fullPathName;
+    Puzzle* puzzle = this->puzzles[selectedPuzzleIndex];
+    QString fullPathName = puzzle->fullPathName;
 
-//    delete puzzle;
-//    puzzle = nullptr;
+    delete this->puzzles[selectedPuzzleIndex];
+    this->puzzles[selectedPuzzleIndex] = nullptr;
 
-//    QMessageBox::question(
-//                this,
-//                tr("Reloading Puzzle"),
-//                tr("Continue reloading the Puzzle?"),
-//                QMessageBox::Yes,
-//                QMessageBox::NoButton);
-
-//    puzzle = loadPuzzle(fullPathName);
-//    if (nullptr != puzzle)
-//    {
-//        ui->comboBox_Puzzles->setItemText(selectedPuzzleIndex, puzzle->puzzleTitle);
-//        this->puzzles[selectedPuzzleIndex] = puzzle;
-//        this->setPuzzle(puzzle);
-//    }
-//    else
-//    {
-//        ui->comboBox_Puzzles->removeItem(selectedPuzzleIndex);
-//        puzzles.removeAt(selectedPuzzleIndex);
-//    }
+    puzzle = loadPuzzle(fullPathName);
+    if (nullptr != puzzle)
+    {
+        ui->comboBox_Puzzles->setItemText(selectedPuzzleIndex, puzzle->puzzleTitle);
+        this->puzzles[selectedPuzzleIndex] = puzzle;
+        this->setPuzzle(puzzle);
+    }
+    else
+    {
+        ui->comboBox_Puzzles->removeItem(selectedPuzzleIndex);
+        puzzles.removeAt(selectedPuzzleIndex);
+    }
 }
 
 void MainWindow::on_action_Run_triggered()
