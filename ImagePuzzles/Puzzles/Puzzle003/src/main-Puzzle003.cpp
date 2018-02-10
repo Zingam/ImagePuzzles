@@ -94,6 +94,7 @@ GetPuzzleInfo(getPuzzleInfo)    // void
     puzzleInfo->paramaters = parameters.c_str();
     puzzleInfo->parametersInfo = const_cast<char*>(parametersInfo);
     puzzleInfo->text = const_cast<char*>(text);
+    puzzleInfo->usesExternalImage = true;
 
     PuzzleInfo::Implementations& implementations = getImplementations();
     puzzleInfo->implementations = &implementations;

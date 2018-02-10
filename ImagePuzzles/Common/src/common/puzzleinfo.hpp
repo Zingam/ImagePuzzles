@@ -28,6 +28,8 @@ struct PuzzleInfo
     const char* parametersInfo;
     const char* text;
 
+    bool usesExternalImage;
+
     // Assign a Map containing the function names and types
     using Implementations = std::vector<PuzzleInfo::ImplementationType>;
     Implementations* implementations;

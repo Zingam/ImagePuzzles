@@ -1,7 +1,7 @@
 import qbs
 
 DynamicLibrary {
-    property var projectName: "Puzzle001";
+    property string projectName: "Puzzle001";
 
     // Project settings
     name: projectName
@@ -15,7 +15,7 @@ DynamicLibrary {
     }
 
     // Properties
-    property var destinationDirectoryPath:  qbs.buildVariant + "/Puzzles";
+    property string destinationDirectoryPath:  qbs.buildVariant + "/Puzzles";
 
     // Compiler flags and settings
     cpp.cxxLanguageVersion: {

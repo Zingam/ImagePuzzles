@@ -1,6 +1,7 @@
 #include "Puzzle001.hpp"
 
 #include <common/puzzleinfo.hpp>
+#include <common/pixmap.hpp>
 
 #include <iostream>
 #include <stdexcept>

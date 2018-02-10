@@ -6,7 +6,7 @@ CppApplication {
     consoleApplication: false
 
     // Properties
-    property var destinationDirectoryPath: qbs.buildVariant;
+    property string destinationDirectoryPath: qbs.buildVariant;
 
     // Compiler flags and settings
     cpp.cxxLanguageVersion: {

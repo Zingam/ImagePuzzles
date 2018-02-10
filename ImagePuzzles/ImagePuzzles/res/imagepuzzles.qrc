@@ -6,5 +6,7 @@
         <file alias="Run">icons/ic_play_circle_outline_black_48dp.png</file>
         <file alias="Save As">icons/ic_save_black_48dp.png</file>
         <file alias="Icon">icons/Roccoor01.png</file>
+        <file alias="Load Default Image">icons/ic_photo_black_48dp.png</file>
+        <file alias="Load Image">icons/ic_photo_library_black_48dp.png</file>
     </qresource>
 </RCC>

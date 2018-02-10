@@ -35,11 +35,13 @@ MainWindow::MainWindow(QWidget* parent) :
     // Set the icons for the QAction widgets due to a shortcomming in Qbs
     ui->action_About->setIcon(QIcon(":/icons/About"));
     ui->action_Exit->setIcon(QIcon(":/icons/Exit"));
+    ui->action_Load_Default_Image->setIcon(QIcon(":/icons/Load Default Image"));
+    ui->action_Load_Image->setIcon(QIcon(":/icons/Load Image"));
     ui->action_Reload->setIcon(QIcon(":/icons/Reload"));
     ui->action_Run->setIcon(QIcon(":/icons/Run"));
     ui->action_SaveAs->setIcon(QIcon(":/icons/Save As"));
 
-    // Set the icons for the pushButtons
+    // Set the icons for the QPushButton widgets
     ui->pushButton_Puzzles_Reload->setIcon(QIcon(":/icons/Reload"));
     ui->pushButton_Puzzles_Run->setIcon(QIcon(":/icons/Run"));
 
@@ -74,6 +76,16 @@ MainWindow::~MainWindow()
 ////////////////////////////////////////////////////////////////////////////////
 // PRIVATE: METHODS
 ////////////////////////////////////////////////////////////////////////////////
+void MainWindow::actionNotImplemented()
+{
+    QMessageBox::warning(
+                    this,
+                    tr("Action Not Implemented"),
+                    tr("This action is not implemented yet!"),
+                    QMessageBox::Ok,
+                    QMessageBox::NoButton);
+}
+
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     QMessageBox messageBox;
@@ -105,6 +117,8 @@ void MainWindow::setPuzzle(Puzzle* puzzle)
 {
     if (nullptr != puzzle)
     {
+        //ui->tab_label_SourceImage->hide();
+
         // Set Parameters line edit
         const char* const lparameters = puzzle->puzzleInfo->paramaters;
         if (nullptr != lparameters)
@@ -137,17 +151,24 @@ void MainWindow::setPuzzle(Puzzle* puzzle)
         }
 
         // Set Image tab
-        ui->tab_label_Image->setText(tr("Click \"Run\" to execute the currently selected Puzzle"));
+        ui->tab_label_GeneratedImage->setText(tr("Click \"Run\" to execute the currently selected Puzzle"));
+        if (puzzle->puzzleInfo->usesExternalImage)
+        {
+            ui->tab_frame_SourceImage->show();
+        }
+        else
+        {
+            ui->tab_frame_SourceImage->hide();
+        }
 
         // Set Puzzle tab
         ui->tab_label_PuzzleText->setAlignment(Qt::AlignJustify | Qt::AlignTop);
         ui->tab_label_PuzzleText->setText(puzzle->puzzleInfo->text);
-
     }
     else
     {
         ui->lineEdit_Puzzles_Parameters->setText("");
-        ui->tab_label_Image->setText(tr("Please, select a Puzzle!"));
+        ui->tab_label_GeneratedImage->setText(tr("Please, select a Puzzle!"));
         ui->tab_label_PuzzleText->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         ui->tab_label_PuzzleText->setText("Valid Puzzle information is not available!");
     }
@@ -197,6 +218,10 @@ void MainWindow::on_action_Reload_triggered()
     }
 
     int selectedPuzzleIndex = ui->comboBox_Puzzles->currentIndex();
+    if (0 > selectedPuzzleIndex)
+    {
+        return;
+    }
 
     Puzzle* puzzle = this->puzzles[selectedPuzzleIndex];
     QString fullPathName = puzzle->fullPathName;
@@ -221,9 +246,27 @@ void MainWindow::on_action_Reload_triggered()
     }
 }
 
+void MainWindow::on_action_Load_Default_Image_triggered()
+{
+    qDebug() << "Load Default Image";
+
+    actionNotImplemented();
+}
+
+void MainWindow::on_action_Load_Image_triggered()
+{
+    qDebug() << "Load Image";
+
+    actionNotImplemented();
+}
+
 void MainWindow::on_action_Run_triggered()
 {
     int selectedPuzzleIndex = ui->comboBox_Puzzles->currentIndex();
+    if (0 > selectedPuzzleIndex)
+    {
+        return;
+    }
 
     QString puzzleTitle = puzzles.at(selectedPuzzleIndex)->puzzleTitle;
     QString message = tr("Running: ") + puzzleTitle;
@@ -273,12 +316,13 @@ void MainWindow::on_action_Run_triggered()
                         + tr("<p class='message'>You have entered invalid parameters.</p>"
                              "<p class='info'>Default values will be used instead.</p>"),
                         QMessageBox::Ok, QMessageBox::NoButton);
-        }
+
             break;
+        }
         case PuzzleInfo::NoError:
         {
-        }
             break;
+        }
     }
 
     if (nullptr != puzzlePixmap)
@@ -293,7 +337,16 @@ void MainWindow::on_action_Run_triggered()
             if (!(this->pixmap_PuzzleResult.isNull()))
             {
                 qDebug() << "Pixmap loaded";
-                ui->tab_label_Image->setPixmap(this->pixmap_PuzzleResult);
+
+                ui->tab_label_GeneratedImage->setPixmap(
+                            this->pixmap_PuzzleResult.scaled(
+                                ui->tab_label_GeneratedImage->geometry().size(),
+                                Qt::AspectRatioMode::KeepAspectRatio));
+
+                ui->tab_label_SourceImage->setPixmap(
+                            this->pixmap_PuzzleResult.scaled(
+                                ui->tab_label_GeneratedImage->geometry().size(),
+                                Qt::AspectRatioMode::KeepAspectRatio));
             }
             else
             {
@@ -306,6 +359,8 @@ void MainWindow::on_action_Run_triggered()
 void MainWindow::on_action_SaveAs_triggered()
 {
     qDebug() << "Save As";
+
+    actionNotImplemented();
 }
 
 void MainWindow::on_comboBox_Puzzles_activated(int index)

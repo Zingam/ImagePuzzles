@@ -68,6 +68,7 @@ GetPuzzleInfo(getPuzzleInfo)    // void
     puzzleInfo->paramaters = parameters.c_str();
     puzzleInfo->parametersInfo = parametersInfo;
     puzzleInfo->text = text;
+    puzzleInfo->usesExternalImage = false;
     puzzleInfo->implementations = &getImplementations(implementations);
 
     return puzzleInfo;
