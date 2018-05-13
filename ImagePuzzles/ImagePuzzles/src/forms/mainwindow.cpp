@@ -131,7 +131,7 @@ void MainWindow::setPuzzle(Puzzle* puzzle)
         const PuzzleInfo::Implementations* implementations
                 = puzzle->puzzleInfo->implementations;
 
-        for(PuzzleInfo::ImplementationType implementation: (*implementations))
+        for (auto implementation: (*implementations))
         {
             switch(implementation)
             {

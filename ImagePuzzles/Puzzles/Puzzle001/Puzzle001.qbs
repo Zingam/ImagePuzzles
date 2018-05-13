@@ -20,10 +20,10 @@ DynamicLibrary {
     // Compiler flags and settings
     cpp.cxxLanguageVersion: {
         if (cpp.compilerName.contains("clang++")) {
-            return "c++14";
+            return "c++17";
         }
         else if (cpp.compilerName.contains("g++")) {
-            return "c++14";
+            return "c++17";
         }
         return "c++17"
     }
